@@ -27,9 +27,20 @@ pipeline {
     }
 
     stage('stage3') {
-      steps {
-        echo '123 message'
-        sh 'ls -l'
+      parallel {
+        stage('stage3') {
+          steps {
+            echo '123 message'
+            sh 'ls -l'
+          }
+        }
+
+        stage('stage5') {
+          steps {
+            git(url: 'https://github.com/beiyexertz/creating-a-pipeline-in-blue-ocean.git', branch: 'master')
+          }
+        }
+
       }
     }
 
