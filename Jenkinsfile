@@ -38,6 +38,7 @@ pipeline {
         stage('stage5') {
           steps {
             git(url: 'https://github.com/beiyexertz/creating-a-pipeline-in-blue-ocean.git', branch: 'master')
+            zip(zipFile: 'zz.zip', archive: true, dir: 'creating-a-pipeline-in-blue-ocean', exclude: '.git')
           }
         }
 
