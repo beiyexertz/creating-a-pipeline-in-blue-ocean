@@ -19,6 +19,19 @@ pipeline {
       }
     }
 
+    stage('stage3') {
+      steps {
+        echo '123 message'
+        sh 'ls -l'
+      }
+    }
+
+    stage('stge4') {
+      steps {
+        echo 'end'
+      }
+    }
+
   }
   environment {
     a = 'b'
