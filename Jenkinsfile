@@ -12,7 +12,14 @@ pipeline {
         stage('stage2') {
           steps {
             sleep 20
-            zip(zipFile: 'a', dir: 'b', exclude: 'c', file: 'd', glob: 'd')
+            retry(count: 5) {
+              echo 'repeeat print'
+            }
+
+            task(name: 'abcde') {
+              writeFile(file: 'a.txt', text: 't.txt', encoding: 'utf-8')
+            }
+
           }
         }
 
